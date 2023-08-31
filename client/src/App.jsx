@@ -5,7 +5,7 @@ import CommitList from './components/CommitList';
 
 const App = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <Header />
       <div className="flex flex-col-reverse md:flex-row flex-grow">
         <div className="w-full md:w-2/5 p-4">
@@ -15,7 +15,7 @@ const App = () => {
           <CommitList />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
