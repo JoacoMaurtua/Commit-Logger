@@ -15,10 +15,20 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('/commits (GET)', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/commits')
+      .expect(200);
+
+    expect(Array.isArray(response.body)).toBeTruthy();
+
+    response.body.forEach(commit => {
+      expect(commit).toHaveProperty('sha');
+      expect(commit).toHaveProperty('commit.author.name');
+    });
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });
