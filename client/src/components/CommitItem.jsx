@@ -7,7 +7,7 @@ const CommitItem = ({ name, photo, date, time, id, username }) => {
             <div className="hidden sm:flex justify-between items-center border-b border-[#390062] p-4">
                 <div className="flex w-4/5">
                     <div className="flex-grow">
-                        <div className="text-white mb-2">{name}</div>
+                        <div className="text-white mb-2"># {name}</div>
                         <div className="flex items-center">
                             <img src={photo} alt="User" className="w-10 h-10 rounded-full mr-4" />
                             <div className="text-white mr-4">{username}</div>
@@ -35,7 +35,7 @@ const CommitItem = ({ name, photo, date, time, id, username }) => {
                     </div>
                 </div>
                 <div className="w-full sm:w-1/4 ml-auto p-2 rounded text-center">
-                    <div className="text-white bg-[#8b2fc9] p-1 rounded-lg mt-20">{id}</div>
+                    <div className="text-white bg-[#8b2fc9] p-1 rounded-lg mb-24">{id}</div>
                 </div>
             </div>
         </>

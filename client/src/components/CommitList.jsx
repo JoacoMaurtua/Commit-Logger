@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CommitItem from './CommitItem';
+import { CommitContext } from './CommitContext';
 
 const CommitList = () => {
-    // Dummy data for now, eventually this will come from the GitHub API
-    const dummyData = Array.from({ length: 12 }, (_, i) => ({
-        name: `Commit #${i + 1}`,
-        photo: 'https://via.placeholder.com/50',
-        date: '2023-08-29',
-        time: '14:00',
-        id: `${1000000 + i}`,
-        username: 'JoaquinMaurtua',
-    }));
-
+    const { commits, fetchCommits } = useContext(CommitContext);
     const [currentPage, setCurrentPage] = useState(1);
-    const commitsPerPage = 9;
-    const totalPages = Math.ceil(dummyData.length / commitsPerPage);
+    const commitsPerPage = 5;
+
+    useEffect(()=>{
+        fetchCommits();
+    },[]);
+
+    //Commits pagination
+    const totalPages = Math.ceil(commits.length / commitsPerPage);
 
     const handleNext = () => {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -24,7 +22,7 @@ const CommitList = () => {
         setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
     };
 
-    const currentCommits = dummyData.slice((currentPage - 1) * commitsPerPage, currentPage * commitsPerPage);
+    const currentCommits = commits.slice((currentPage - 1) * commitsPerPage, currentPage * commitsPerPage);
 
     return (
         <div className="bg-[#210039] text-white p-4 mt-14 sm:p-4 sm:mb-20 md:p-4 rounded-lg">
