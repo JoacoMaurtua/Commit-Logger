@@ -5,7 +5,7 @@ import { CommitContext } from './CommitContext';
 const CommitList = () => {
     const { commits, fetchCommits } = useContext(CommitContext);
     const [currentPage, setCurrentPage] = useState(1);
-    const commitsPerPage = 5;
+    const commitsPerPage = 6;
 
     useEffect(()=>{
         fetchCommits();

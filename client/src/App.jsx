@@ -10,7 +10,7 @@ const App = () => {
             <>
                 <Header />
                 <div className="flex flex-col-reverse md:flex-row flex-grow">
-                    <div className="w-full md:w-2/5 p-4">
+                    <div className="hidden sm:block w-full md:w-2/5 p-4">
                         <Animation />
                     </div>
                     <div className="w-full md:w-3/5 p-4">
